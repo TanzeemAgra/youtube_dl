@@ -1,0 +1,29 @@
+stages:
+  load_data:
+    cmd: python src/split.py --config=params.yaml
+    deps:
+      - src/get_data.py
+      - src/split.py
+      - Data_Set/
+    outs:
+      - data/processed:
+        persist: true
+
+  train_model:
+    cmd: python src/model_train.py --config=params.yaml
+    deps:
+      - src/get_data.py
+      - src/model_train.py
+    outs:
+      - saved_models:
+        persist: true
+      - reports:
+        persist: true
+
+  evaluate:
+    cmd: python src/evaluate.py --config=params.yaml
+    deps:
+      - src/get_data.py
+      - src/evaluate.py
+      
+    

@@ -1,0 +1,34 @@
+base:
+  project: Deep Learning Project for Youtube Channel
+
+data_source:
+  data_src: Data_Set
+
+load_data:
+  num_classes: 4
+  raw_data: Data_Set
+  preprocessed_data: data/processed
+  full_Path: deep_learning/Data_Set
+
+train_split:
+  split_ration: 80
+
+model:
+  name: VGG19
+  trainable: False
+  train_path: data/processed/train
+  test_path: data/processed/test
+  image_size: [255,255]
+  loss: 'categorical_crossentropy'
+  optimizer: 'adam'
+  metrics: ['accuracy']
+  epochs: 5
+  sav_dir: saved_models/trained.h5
+
+ima_augment:
+  rescale: 1./255
+  shear_range: 0.2
+  zoom_range: 0.2
+  horizontal_flip: 18
+  class_mode: 'categorical'
+
