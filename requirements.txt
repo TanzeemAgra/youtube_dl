@@ -7,11 +7,12 @@ pandas
 numpy
 joblib
 dvc
-Pillow==2.2.0
+Pillow
 gunicorn
-Keras==2.3.0
-tensorflow==2.0.0
+Keras
+tensorflow
 #opencv-python-headless
 h5py==2.10.0
 PyYAML
 pandas
+matplotlib
