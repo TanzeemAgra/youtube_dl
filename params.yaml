@@ -6,9 +6,9 @@ data_source:
 
 load_data:
   num_classes: 4
-  raw_data: ..\Data_Set
-  preprocessed_data: ..\data\preprocessed
-  full_Path: \deep_learning\Data_Set
+  raw_data: Data_Set
+  preprocessed_data: data/processed
+  full_Path: deep_learning/Data_Set
 
 train_split:
   split_ratio: 80
@@ -16,8 +16,8 @@ train_split:
 model:
   name: VGG19
   trainable: True
-  train_path: data\processed\train
-  test_path: data\processed\test
+  train_path: data/processed/train
+  test_path: data/processed/test
   image_size: [255,255]
   loss: 'categorical_crossentropy'
   optimizer: 'adam'
