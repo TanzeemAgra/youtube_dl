@@ -22,16 +22,25 @@ model:
   loss: 'categorical_crossentropy'
   optimizer: 'adam'
   metrics: ['accuracy']
-  epochs: 5
+  epochs: 1
   sav_dir: saved_models/trained.h5
 
 img_augment:
-  rescale: 1./255
+  rescale: 1./255,
   shear_range: 0.2
-  vertical_flip: 0.2
-  horizontal_flip: 0.2
   zoom_range: 0.2
-  horizontal_flip: 18
-  batch_size: 32
+  horizontal_flip: True
+  vertical_flip: True
+  batch_size: 18
   class_mode: 'categorical'
+
+
+model_dir: saved_models
+
+mlflow_config:
+  artifacts_dir: artifacts
+  experiment_name: Deep_Learning_VGG19
+  run_name: mlops
+  registered_model_name: Deep_Learning
+  remote_server_uri: http://127.0.0.1:5000
 

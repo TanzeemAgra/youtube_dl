@@ -1,0 +1,20 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/split.py --config=params.yaml
+    deps:
+    - path: Data_Set/
+      md5: d8c8afef1244054539594c91e168fca1.dir
+      size: 222894997
+      nfiles: 874
+    - path: src/get_data.py
+      md5: 9969ca112255ab80f4051c27f359b071
+      size: 580
+    - path: src/split.py
+      md5: 7099a9734a94afc4fddcedf29c2734d2
+      size: 1292
+    outs:
+    - path: data/processed
+      md5: 5c9587c9ffcea61ed37f443dcc445beb.dir
+      size: 300390395
+      nfiles: 1264

@@ -7,7 +7,7 @@ stages:
       - Data_Set/
     outs:
       - data/processed:
-        persist: true
+          persist: true
 
   train_model:
     cmd: python src/model_train.py --config=params.yaml
@@ -16,9 +16,9 @@ stages:
       - src/model_train.py
     outs:
       - saved_models:
-        persist: true
+          persist: true
       - reports:
-        persist: true
+          persist: true
 
   evaluate:
     cmd: python src/evaluate.py --config=params.yaml
