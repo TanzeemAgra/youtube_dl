@@ -74,7 +74,7 @@ def train_model(config_file):
                                                 class_mode = class_mode
                                                 )
 
-        #################### MLFLOW #########################
+        ######################### MLFLOW STARTS FROM HERE ###################
         mlflow_config=config["mlflow_config"]
         remote_server_uri=mlflow_config["remote_server_uri"]
         mlflow.set_tracking_uri(remote_server_uri)
@@ -86,33 +86,27 @@ def train_model(config_file):
                                     steps_per_epoch = len(train_set),
                                     validation_steps = len(test_set)
             ) 
+                                    
             train_loss=history.history['loss'][-1]
-            #train_acc=history.history['sparse_categorical_accuracy'][-1]
+            train_acc=history.history['accuracy'][-1]
             val_loss=history.history['val_loss'][-1]
-            #val_acc=history.history['val_sparse_categorical_accuracy'][-1]
-
-            print("train_loss: ", train_loss)
-            #print("train_accuracy: ", train_acc)
-            print("val_loss: ", val_loss)
-            #print("val_accuracy: ", val_acc)
-
-            #mlflow.log_param("alpha", alpha)
+            print("train_loss:", train_loss)  
+            print("train_accuracy:", train_acc) 
+            print("val_loss:", val_loss)     
             mlflow.log_param("epochs", epochs)
-            #mlflow.log_param("optimizer", optimizer)
-            #mlflow.log_param("loss", loss)
-            #mlflow.log_param("metrics", metrics)
-            mlflow.log_param("loss", loss)
-            #mlflow.log_param("train_accuracy", train_acc)
-            mlflow.log_param("val_loss", val_loss)
-            #mlflow.log_param("val_accuracy", val_acc)
+            mlflow.log_metric("val_loss", val_loss)
+            mlflow.log_metric("train_loss", train_loss)
+            mlflow.log_metric("train_accuracy", train_acc)
 
-            tracking_url_type_store = urlparse(mlflow.get_artifact_uri()).scheme
+            tracking_url_type_store= urlparse(mlflow.get_artifact_uri()).scheme
 
-            if tracking_url_type_store != "file":
+            if tracking_url_type_store!="file":
                 mlflow.keras.log_model(mod, "model", registered_model_name=mlflow_config["registered_model_name"])
             else:
                 mlflow.keras.load_model(mod, "model")
-        
+
+        ###################### END OF MLFLOW TRACKING OF DEEP LEARNING MODEL #############
+    
     else:
         print('Model not trained by Xerxez Solutions')
 
