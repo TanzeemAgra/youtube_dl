@@ -22,7 +22,7 @@ model:
   loss: 'categorical_crossentropy'
   optimizer: 'adam'
   metrics: ['accuracy']
-  epochs: 1
+  epochs: 6
   sav_dir: saved_models/trained.h5
 
 img_augment:
@@ -36,6 +36,8 @@ img_augment:
 
 
 model_dir: saved_models
+
+web_model_directory: saved_models/trained.h5
 
 mlflow_config:
   artifacts_dir: artifacts

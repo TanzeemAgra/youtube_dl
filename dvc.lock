@@ -18,3 +18,9 @@ stages:
       md5: 5c9587c9ffcea61ed37f443dcc445beb.dir
       size: 300390395
       nfiles: 1264
+  log_production_model:
+    cmd: python src/log_production.py --config=params.yaml
+    deps:
+    - path: src/log_production.py
+      md5: baeb42bdfe978de8d865cf3797ff4913
+      size: 1937
