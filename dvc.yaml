@@ -20,11 +20,11 @@ stages:
       - reports:
           persist: true
 
-  evaluate:
-    cmd: python src/evaluate.py --config=params.yaml
-    deps:
-      - src/get_data.py
-      - src/evaluate.py
+  #evaluate:
+  #  cmd: python src/evaluate.py --config=params.yaml
+  #  deps:
+  #    - src/get_data.py
+  #    - src/evaluate.py
 
   log_production_model:
     cmd: python src/log_production.py --config=params.yaml

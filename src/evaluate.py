@@ -8,6 +8,18 @@ from keras_preprocessing.image import ImageDataGenerator
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
+from keras_preprocessing.image import ImageDataGenerator
+from keras.layers import Dense,Input,Flatten
+from keras.models import Model
+from glob import glob
+import os
+import argparse
+from get_data import get_data
+import matplotlib.pyplot as plt
+from keras.applications.vgg19 import VGG19
+import tensorflow
+import mlflow
 
 def m_evaluate(config_file):
     config = get_data(config_file)
@@ -42,8 +54,6 @@ def m_evaluate(config_file):
     df.style.background_gradient(cmap='viridis',subset=pd.IndexSlice['0':'9','f1-score'])
     df.to_csv('reports/classification_report')
     print('Classification Report and Confusion Matrix Report are saved in reports folder of Template')
-
-
 
 if __name__ == '__main__':
 
