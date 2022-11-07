@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Welcome Xerxez Solution</title>
-</head>
-<body>
+<title>Xerxez Solutions</title>
 
-<h1>This is to Recognise Images of Four Different Classes</h1>
+<style>
+.button {
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #4CAF50;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
+</style>
+
+<body style="background-color:powderblue;">
+<center><h1> <span style="color:#FF0000">Welcome to Xerxez Solutions</span></h1></center>
+<center><h3>Kindly Upload the Image to Predict </h3></center><br>
+
+<form action= "{% url 'index' %}" method="POST" enctype="multipart/form-data">
+
+  {% csrf_token %}
+  
+  <table align="center">
+  
+    <center><input type="file" name="upload" accept=".jpg, .jpeg, .png, .jfif" />
+      <input type="submit" value="submit" /></center>
+  
+  </table>
+  
+   
+  </form>
+
+  <p>{{ pred }}</p>
 
 </body>
 </html>
