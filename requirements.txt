@@ -10,9 +10,7 @@ Pillow
 gunicorn
 keras
 opencv-python-headless
-h5py
 PyYAML
-pandas
 matplotlib
 jupyterlab
 opencv-python
