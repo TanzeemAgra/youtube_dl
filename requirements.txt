@@ -10,7 +10,7 @@ dvc
 Pillow
 gunicorn
 keras
-tensorflow==2.10.0
+tensorflow==2.8
 opencv-python-headless
 h5py
 PyYAML
