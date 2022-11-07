@@ -9,7 +9,7 @@ joblib
 dvc
 Pillow
 gunicorn
-tensorflow==2.8
+tensorflow
 opencv-python-headless
 h5py
 PyYAML
