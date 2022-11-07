@@ -9,7 +9,6 @@ joblib
 dvc
 Pillow
 gunicorn
-keras
 tensorflow==2.8
 opencv-python-headless
 h5py
