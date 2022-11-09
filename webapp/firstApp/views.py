@@ -39,21 +39,21 @@ def makepredictions(path):
 
     # here we convert the image into numpy array and reshape
     rgb_img=np.array(rgb_img,dtype=np.float64)
-    rgb_img=rgb_img.reshape(1,244,244,3)
+    rgb_img=rgb_img.reshape(1,255,255,3)
 
     #we make predictions here
 
     predictions =model.predict(rgb_img)
     a=int(np.argmax(predictions))
     if a==1:
-        a="Result : Glioma Tumor"
+        a="Result : Bulbasaur"
     elif a==2:
-        a="Result : Meningioma Tumor"
+        a="Result : Charmander"
         
     elif a==3:
-        a="Result : No Tumor"
+        a="Result : Squirtle"
     else:
-        a="Result: Pictiuary Tumor"
+        a="Result: Tauros"
     return a            
 
 def index(request):
