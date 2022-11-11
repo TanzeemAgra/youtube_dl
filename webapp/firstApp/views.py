@@ -1,23 +1,14 @@
+
 from django.shortcuts import render
-import os
-os.environ["CUDA_VISIBLE_DEVICES"]="-1" 
-from flask import Flask,render_template,url_for,request
-from werkzeug.utils import secure_filename
-from keras.models import load_model
-#from keras.preprocessing.image import image
-import numpy as np
-#from keras.compat.v1 import ConfigProto
-#from compat.v1 import InteractiveSession
-#from tensorflow.keras.preprocessing import image
-from PIL import Image
-import cv2
 import keras
+from PIL import Image
+import numpy as np
+import os
 from django.core.files.storage import FileSystemStorage
 
-media='media'
-model=keras.models.load_model('../saved_models/trained.h5')
-
 # Create your views here.
+media='media'
+model = keras.models.load_model('../saved_models/trained.h5')
 
 def makepredictions(path):
     #we open the image
@@ -26,7 +17,7 @@ def makepredictions(path):
 
     #we resize the image for model
 
-    img_d = img.resize((244,244))
+    img_d = img.resize((255,255))
 
     # we check if image is RGB or not
 
@@ -39,7 +30,7 @@ def makepredictions(path):
 
     # here we convert the image into numpy array and reshape
     rgb_img=np.array(rgb_img,dtype=np.float64)
-    rgb_img=rgb_img.reshape(1,255,255,3)
+    rgb_img=rgb_img.reshape(-1,255,255,3)
 
     #we make predictions here
 
@@ -54,7 +45,7 @@ def makepredictions(path):
         a="Result : Squirtle"
     else:
         a="Result: Tauros"
-    return a            
+    return a
 
 def index(request):
     if request.method == "POST" and request.FILES['upload']:
@@ -72,9 +63,5 @@ def index(request):
         file_url=fss.url(file)
         predictions=makepredictions(os.path.join(media,file))
         return render(request,'index.html',{'pred':predictions,'file_url':file_url})
-
-
-    
-
     else:
         return render(request,'index.html')
