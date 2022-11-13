@@ -44,3 +44,14 @@ jobs:
     #   run: |
     #     git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git
     #     git push heroku HEAD:master -f
+
+    - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v20
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        application_name: DeepLearning
+        environment_name: youtube
+        version_label: 12345
+        region: ap-south-1
+        deployment_package: deploy.zip
