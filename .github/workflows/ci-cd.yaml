@@ -46,7 +46,7 @@ jobs:
     #     git push heroku HEAD:master -f
 
     - name: Deploy to EB
-      uses: Tanzeem - Agra/django-aws-eb-deploy@V1.1
+      uses: joel-hanson/django-aws-eb-deploy@V1.1
       with:
         python_version: ${{ matrix.python_version }}
         flake8: true
