@@ -19,3 +19,4 @@ seaborn
 mlflow
 django
 joblib
+tensorflow
