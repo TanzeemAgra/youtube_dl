@@ -22,7 +22,7 @@ jobs:
   
     - name: Run Tests
       run: |
-        python manage.py test
+        python ./deep_learning/webapp/manage.py test
   deploy:
       needs: [test]
       runs-on: ubuntu-latest
