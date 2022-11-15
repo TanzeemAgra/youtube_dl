@@ -22,7 +22,7 @@ jobs:
   
     - name: Run Tests
       run: |
-        python ./webapp/manage.py tests
+        python ./webapp/manage.py test
   deploy:
       needs: [test]
       runs-on: ubuntu-latest
