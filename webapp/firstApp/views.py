@@ -8,7 +8,7 @@ from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 media='media'
-model = keras.models.load_model('../saved_models/trained.h5')
+model = keras.models.load_model('saved_models/trained.h5')
 
 def makepredictions(path):
     #we open the image
