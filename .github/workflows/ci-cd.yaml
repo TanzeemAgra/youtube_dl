@@ -41,7 +41,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           
           application_name: deeplearning
-          environment_name: youtube
+          environment_name: youtube_dl
           
           version_label: django-example-v2022-18-04.1
           region: "ap-south-1"
