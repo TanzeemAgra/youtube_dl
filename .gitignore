@@ -87,5 +87,5 @@ target/
 
 # Mypy cache
 .mypy_cache/
-Data_Set/
+.Data_Set/
 
